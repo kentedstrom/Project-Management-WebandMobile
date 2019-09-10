@@ -1,6 +1,6 @@
 # Project-Management-WebandMobile
 
-The purpose of our project will be to create a management tool that will be able to track projects. This will include members working on the project, start date, end date, and budget. The user will be able to create projects, load saved projects, update projects with new information, or delete projects.
+The purpose of the project will be to create a management tool that will be able to track projects. This will include members working on the project, start date, end date, and budget. The user will be able to create projects, load saved projects, update projects with new information, or delete projects.
 
 The specific entities that would be handled with CRUD are:
 Project (id, projectname, startdate, enddate, description)
