@@ -20,4 +20,4 @@ Yes, the website is currently up and running at https://serene-hamlet-11849.hero
 
 # What is left to implement? 
 
-Currently, you are unable to assign staff members to a project or tasks, and in our next iteration I will implement that. However, at the moment, the website is fully operational and able to be used easily.
+Currently, you are unable to assign staff members to a project or tasks, and in our next iteration I will implement that. However, at the moment, the website is fully operational and able to be used easily. Also, accessing tasks in the website is a little hard to understand. You must first select a project in the top right and click "go to project" before you are allowed to view and add tasks to a specific project. This is due to tasks being part of a project and unable to exist on their own. However, this should be made more user-friendly and I will aim to address this in the next iteration.
