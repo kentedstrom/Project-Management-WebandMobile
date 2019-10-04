@@ -1,60 +1,62 @@
 <template>
-  <div class="camels">
-    <h1>List of {{ camels.length }} camels</h1>
-    <b-button type="button" class="createButton" @click="createCamel()">Create Camel</b-button>
+  <div class="projects">
+    <h3>You have {{ projects.length }} projects:</h3>
+    <br>
+    <b-button type="button" class="createButton" @click="createProject()">Create Project</b-button>
+    <br>
     <b-list-group>
-      <camel-item v-for="camel in camels" :key="camel._id" :camel="camel" @delete-camel="deleteCamel"></camel-item>
+      <project-item v-for="project in projects" :key="project._id" :project="project" @delete-project="deleteProject"></project-item>
     </b-list-group>
   </div>
 </template>
 
 <script>
 import { Api } from '@/Api'
-import CamelItem from '@/components/CamelItem'
+import ProjectItem from '@/components/ProjectItem'
 
 export default {
-  name: 'Camels',
+  name: 'Projects',
   data() {
     return {
-      camels: []
+      projects: []
     }
   },
   mounted() {
-    this.getCamels()
+    this.getProjects()
   },
   methods: {
-    getCamels() {
-      Api.get('camels')
+    getProjects() {
+      Api.get('projects')
         .then(reponse => {
-          this.camels = reponse.data.camels
+          this.projects = reponse.data.projects
         })
         .catch(error => {
-          this.camels = []
+          this.projects = []
           console.log(error)
         })
         .then(() => {
           // This code is always executed (after success or error).
         })
     },
-    deleteCamel(id) {
-      Api.delete(`/camels/${id}`)
+    deleteProject(id) {
+      Api.delete(`/projects/${id}`)
         .then(response => {
-          console.log(response.data.message)
-          var index = this.camels.findIndex(camel => camel._id === id)
-          this.camels.splice(index, 1)
+          console.log(response.data.message);
+          var index = this.projects.findIndex(project => project._id === id);
+          this.projects.splice(index, 1);
         })
         .catch(error => {
           console.log(error)
         })
     },
-    createCamel() {
-      var randomCamel = {
-        color: this.getRandomColor(),
-        position: this.getRandomInt(10)
-      }
-      Api.post('/camels', randomCamel)
+    createProject() {
+      var randomProject = {
+        name: this.getRandomColor(),
+        //position: this.getRandomInt(10)
+      };
+      Api.post('/projects', randomProject)
         .then(response => {
-          this.camels.push(response.data)
+          this.projects.push(response.data)
         })
         .catch(error => {
           console.log(error)
@@ -70,22 +72,24 @@ export default {
     }
   },
   components: {
-    CamelItem
+    ProjectItem
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  @import '/../assets/css/stylesheet.css';
+  /*
 a {
   color: #42b983;
 }
 .createButton {
   margin-bottom: 1em;
 }
-.camels {
+.projects {
   margin-left: 5%;
   margin-right: 5%;
   margin-bottom: 2em;
-}
+}*/
 </style>

@@ -88,7 +88,7 @@ router.delete('/:id', function(req, res, next) {
 
 router.patch('/:id', function(req, res, next) {
     var id = req.params.id;
-    StaffMember.findById(id, function (err, camel) {
+    StaffMember.findById(id, function (err, staffMember) {
         if (err) {
             return next(err);
         }
@@ -103,6 +103,8 @@ router.patch('/:id', function(req, res, next) {
         res.json(staffMember);
     });
 })
+/*
+ */
 /*
 (a) POST /camels - DONE
 (b) GET /camels - DONE

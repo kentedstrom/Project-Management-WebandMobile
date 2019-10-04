@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "2ede76f3-6356-4813-89f4-05d6ea08e75b",
-		"name": "server",
+		"_postman_id": "160148ac-ee54-48ff-9410-ec6d4e5e1768",
+		"name": "server copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -14,6 +14,18 @@
 						"id": "c67a5d47-3a70-45b0-8001-b37eb933382f",
 						"exec": [
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1938b513-8f59-4699-be6b-4aefc5e1edd7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -35,6 +47,1733 @@
 					],
 					"path": [
 						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/staffMembers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cc40a11d-9bab-4c56-a63d-97efa2e986a6",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var staffMemberId = jsonData._id;",
+							"pm.environment.set(\"staffMember_id\", staffMemberId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Michael Jackson\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"michael@developer.com\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers"
+					]
+				},
+				"description": "{\n\t\"name\" : \"Niklas\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@develper.com\"\n\t\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/staffMembers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Niklas M\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@developer.com\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/staffMembers/id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Niklas M\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@developer.com\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers/5d7f6da18ae0185714ebf002",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers",
+						"5d7f6da18ae0185714ebf002"
+					]
+				},
+				"description": "{\n\t\"name\" : \"Niklas\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@develper.com\"\n\t\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/staffMembers/id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Jocke M\",\n\t\"salaryPerHour\" : 300,\n\t\"email\" : \"jocke@developer.com\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers/5d7f6da18ae0185714ebf002",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers",
+						"5d7f6da18ae0185714ebf002"
+					]
+				},
+				"description": "{\n\t\"name\" : \"Niklas\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@develper.com\"\n\t\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/staffMembers/id",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Roger Moore\"\n\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers/5d7f6da18ae0185714ebf002",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers",
+						"5d7f6da18ae0185714ebf002"
+					]
+				},
+				"description": "{\n\t\"name\" : \"Niklas\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@develper.com\"\n\t\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/staffMembers/id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/staffMembers/5d7f6da18ae0185714ebf002",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"staffMembers",
+						"5d7f6da18ae0185714ebf002"
+					]
+				},
+				"description": "{\n\t\"name\" : \"Niklas\",\n\t\"salaryPerHour\" : 200,\n\t\"email\" : \"niklas@develper.com\"\n\t\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/projects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var projectId = jsonData._id;",
+							"pm.environment.set(\"project_id\", projectId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n   \r\n    \"name\": \"Web Development Star\",\r\n    \"description\": \"Making an awesome web application\",\r\n    \"status\": false\r\n    \r\n    }"
+				},
+				"url": {
+					"raw": "{{host}}/api/projects",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/projects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c27352d-e598-417f-9f2f-4aa91e15b7d1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/projects",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/projects/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a1c9ed7a-5a37-484b-afee-d2cb3f01f6df",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/projects/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae96f52b-a675-43ff-a8be-5cf07bbb0a33",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n   \r\n    \"name\": \"Server Development\",\r\n    \"description\": \"Making an awesome backend\",\r\n    \"status\": false\r\n    \r\n    }"
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/projects/id - ISSUE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae96f52b-a675-43ff-a8be-5cf07bbb0a33",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n   \r\n    \"name\": \"API Development\"\r\n\r\n    }"
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/projects/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae96f52b-a675-43ff-a8be-5cf07bbb0a33",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE/api/projects",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c626c1ad-074e-4a1a-a491-eba319f32dcf",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/api/projects",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var clientId = jsonData._id;",
+							"pm.environment.set(\"client_id\", clientId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n   \r\n    \"name\": \"Gothenburgh Univerity\",\r\n    \"contactDetails\" : \"gu@gu.se\"\r\n    \r\n    }"
+				},
+				"url": {
+					"raw": "{{host}}/api/clients",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "61f92f1b-8c60-46d2-b8b8-2d777b1fe4f2",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/clients",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/clients/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ab611d0a-0a62-46f1-9288-451cc8acf4bb",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/clients/{{client_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"{{client_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/clients/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8f1e09f-00e7-4b04-9461-335e865b81a0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Chalmers University\",\n    \"contactDetails\" : \"chalmers@chalmers.se\"\n    \n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/clients/{{client_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"{{client_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/clients/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "258f7853-6e0f-4615-b691-96107ee96ac1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"SE Depertment Chalmers/GU\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}/api/clients/{{client_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"{{client_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DEL /api/clients/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "258f7853-6e0f-4615-b691-96107ee96ac1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/clients/{{client_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients",
+						"{{client_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/clients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e8f1e09f-00e7-4b04-9461-335e865b81a0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/clients",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/projects Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var projectId = jsonData._id;",
+							"pm.environment.set(\"project_id\", projectId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\r\n   \r\n    \"name\": \"Web Development Star\",\r\n    \"description\": \"Making an awesome web application\",\r\n    \"status\": false\r\n    \r\n    }"
+				},
+				"url": {
+					"raw": "{{host}}/api/projects",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/tasks Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var taskId = jsonData._id;",
+							"pm.environment.set(\"task_id\", taskId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/projects/:id/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"//var jsonData = pm.response.json();",
+							"//var taskId = jsonData._id;",
+							"//pm.environment.set(\"task_id\", taskId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/projects/:id/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/projects/:id/tasks/:id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}/tasks/{{task_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}",
+						"tasks",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/projects/:id/tasks/:id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/projects/{{project_id}}/tasks/{{task_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"projects",
+						"{{project_id}}",
+						"tasks",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var taskId = jsonData._id;",
+							"pm.environment.set(\"task_id\", taskId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/tasks/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/tasks/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work in an excelent manner\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks/{{task_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /api/tasks/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work in an excelent manner\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks/{{task_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/tasks/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"name\": \"Getting Git to work in an excelent manner\", \r\n\t\"dueDate\": \"2019-09-20\",\r\n    \"description\": \"Get help from the gods\",\r\n    \"completed\": false\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/tasks/{{task_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"tasks",
+						"{{task_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/requirements",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var requirementId = jsonData._id;",
+							"pm.environment.set(\"requirement_id\", requirementId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"title\": \"A shopping cart\", \r\n    \"description\": \"The application should enable users to do shopping\"\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/requirements",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/requirements/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT/api/requirements/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements/{{requirement_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements",
+						"{{requirement_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH /api/requirements/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements/{{requirement_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements",
+						"{{requirement_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/requirements/id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/requirements/{{requirement_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"requirements",
+						"{{requirement_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /api/budgets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"// Save reponse data in environment variable",
+							"var jsonData = pm.response.json();",
+							"var budgetId = jsonData._id;",
+							"pm.environment.set(\"budget_id\", budgetId);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {  \"cost\": 200000, \r\n    \"income\": 150000\r\n }"
+				},
+				"url": {
+					"raw": "{{host}}/api/budgets",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"budgets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /api/budgets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f6c8b91c-b1dd-4a4e-82fb-69770b086ee1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{host}}/api/budgets",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"budgets"
 					]
 				}
 			},
