@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/camels">Camels</router-link>
-    </div>
+    <NavBar></NavBar>
+
     <router-view/>
   </div>
 </template>
 
 <style>
+  @import 'assets/css/stylesheet.css';
+  /*
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,7 +17,8 @@
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 20px;
+  background-color: #F78733;
 }
 
 #nav a {
@@ -28,4 +29,30 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+}*/
+
+
+/* Page content. The value of the margin-left property should match the value of the sidebar's width property */
+  /*
+div.content {
+  padding: 1px 16px;
+  height: 1000px;
+}*/
+
+
 </style>
+
+<script>
+
+    import DropdownMenu from './components/DropdownMenu'
+    import NavBar from './components/NavBar'
+    export default {
+        name: 'app',
+        components: {
+            'DropdownMenu': DropdownMenu,
+            'NavBar': NavBar
+        }
+    }
+
+
+</script>

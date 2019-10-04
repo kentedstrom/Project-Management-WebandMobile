@@ -1,5 +1,3 @@
-var test = "test";
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
@@ -19,8 +17,14 @@ var staffMembersController = require('./controllers/staffMembers');
 var tasksController = require('./controllers/taskController');
 
 
+var requirementsController = require('./controllers/requirementsController');
+
+var budgetsController = require('./controllers/budgetController');
+
+
+
 // Variables
-var mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/PMA';
+var mongoURI = 'mongodb+srv://jocke:bananasmoothie@cluster0-h5f88.mongodb.net/projectManagementDB?retryWrites=true&w=majority'|| process.env.MONGODB_URI || 'mongodb://localhost:27017/projectManagementDB';
 var port = process.env.PORT || 3000;
 
 // Connect to MongoDB
@@ -47,14 +51,52 @@ app.use(cors());
 app.get('/api', function(req, res) {
     res.json({'message': 'Welcome to your DIT341 backend ExpressJS project!'});
 });
+
+app.delete('/api/clients', function(req, res){
+    mongoose.connection.dropCollection("clients", function(err, result){
+        if(err){
+            res.json({"message": "failed"});
+        }else{
+            res.json({"message": "success"});
+        }
+    })
+});
+
+app.delete('/api/projects', function(req, res){
+    mongoose.connection.dropCollection("projects", function(err, result){
+        if(err){
+            res.json({"message": "failed"});
+        }else{
+            res.json({"message": "success"});
+        }
+    })
+});
+app.delete('/api/staffmembers', function(req, res){
+    mongoose.connection.dropCollection("staffmembers", function(err, result){
+        if(err){
+            res.json({"message": "failed"});
+        }else{
+            res.json({"message": "success"});
+        }
+    })
+});
+
 app.use('/api/clients', clientsController);
 
 app.use('/api/projects', projectsController);
 
 app.use('/api/staffMembers', staffMembersController);
 
+
 // use tasks
 app.use('/api/tasks',tasksController);
+
+// use requirements
+app.use('/api/requirements',requirementsController);
+
+// use requirements
+app.use('/api/budgets',budgetsController);
+
 /*
 app.get('/api/projects', function(req, res){
     res.json({"projects": projects});
